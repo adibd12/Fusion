@@ -8,7 +8,7 @@ def clean_words(words):
             cleaned_words.append(word)
     return cleaned_words
 
-def extract_animal_data(table):
+def print_animal_data_by_rules(table):
     for row in table.find_all("tr"):
         columns = row.find_all("td")
         if len(columns) >= 2:
@@ -26,6 +26,6 @@ def scrape_animal_data():
     response = requests.get("https://en.wikipedia.org/wiki/List_of_animal_names")
     soup = BeautifulSoup(response.content, "html.parser")
     table = soup.find_all("table", class_="wikitable")[1]
-    extract_animal_data(table)
+    print_animal_data_by_rules(table)
 
 scrape_animal_data()
